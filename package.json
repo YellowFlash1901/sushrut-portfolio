@@ -1,0 +1,22 @@
+{
+  "name": "sushrut-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Sushrut Pawar - Manufacturing Engineer",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve .",
+    "build": "echo 'No build step needed for static site'",
+    "start": "serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "manufacturing-engineer",
+    "semiconductor",
+    "industrial-engineering"
+  ],
+  "author": "Sushrut Pawar",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}

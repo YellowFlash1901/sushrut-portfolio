@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushrut Pawar | Manufacturing Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #667eea;
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            color: #666;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .experience-item {
+            background: #f8f9fa;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .company {
+            color: #667eea;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .duration {
+            color: #666;
+            font-weight: 500;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .achievements li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+        }
+
+        .achievements li::before {
+            content: "▶";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-top: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-title {
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .project-duration {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .education-item {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .degree {
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .university {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .graduation {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .duration {
+                margin-top: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-img">SP</div>
+            <h1>Sushrut Pawar</h1>
+            <p class="subtitle">Entry-Level Equipment/Manufacturing Engineer</p>
+            <p style="color: #666; font-size: 1.1em; margin: 20px 0;">Hands-on semiconductor industry experience in tool validation, SPC monitoring, troubleshooting, and process optimization</p>
+            
+            <div class="contact-info">
+                <a href="tel:+16177775385" class="contact-item">📞 (617) 777-5385</a>
+                <a href="mailto:pawar.su@northeastern.edu" class="contact-item">✉️ pawar.su@northeastern.edu</a>
+                <a href="#" class="contact-item">🔗 LinkedIn</a>
+                <span class="contact-item">📍 Boston, MA (Open to Relocate)</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>About Me</h2>
+            <p class="about-text">
+                I am an Entry-level Equipment/Manufacturing Engineer with hands-on semiconductor industry experience. 
+                My expertise spans tool validation, SPC monitoring, troubleshooting, and process optimization. I excel at 
+                collaborating with cross-functional teams to improve tool uptime, drive cost reduction, and ensure 
+                ISO/cleanroom compliance. With a strong background in data-driven problem solving using DMAIC/8D methodologies, 
+                I'm adept at interpreting schematics, authoring SOPs and Best-Known Methods (BKMs), and partnering with 
+                suppliers for equipment reliability.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Equipment & Maintenance</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Semiconductor Tool Validation</span>
+                        <span class="skill-tag">Root Cause Troubleshooting</span>
+                        <span class="skill-tag">SPC Monitoring</span>
+                        <span class="skill-tag">FDC Data Analysis</span>
+                        <span class="skill-tag">Preventive Maintenance</span>
+                        <span class="skill-tag">Supplier Management</span>
+                        <span class="skill-tag">Equipment KPIs</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Process & Quality</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SOPs</span>
+                        <span class="skill-tag">BKMs</span>
+                        <span class="skill-tag">ISO Standards</span>
+                        <span class="skill-tag">Cleanroom Operations</span>
+                        <span class="skill-tag">PFMEA</span>
+                        <span class="skill-tag">8D/DMAIC</span>
+                        <span class="skill-tag">Reliability Testing</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Software & Data Analysis</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SAP ERP</span>
+                        <span class="skill-tag">SolidWorks</span>
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Minitab</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Advanced Excel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Work Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Manufacturing Engineer Co-op</div>
+                        <div class="company">Veeco Instruments Inc. | New Jersey, USA</div>
+                    </div>
+                    <div class="duration">July 2024 – December 2024</div>
+                </div>
+                <ul class="achievements">
+                    <li>Applied DMAIC/8D methods to resolve tool performance and quality issues, sustaining KPI improvements in production lines</li>
+                    <li>Monitored semiconductor tool performance using SPC, identified process drifts, executed corrective actions that reduced scrap by 12%</li>
+                    <li>Streamlined lead time by 20% completing tool teardown before scheduled deadline resulting in an estimated cost savings of $4,000</li>
+                    <li>Authored Engineering Change Requests and validated Bill of Materials for NPI semiconductor equipment, cutting procurement time by 15%</li>
+                    <li>Collaborated with process and equipment teams to optimize IC-related test fixtures, reducing cycle time by 25% and boosting testing capability</li>
+                    <li>Generated purchase requisitions in SAP for Clean Room equipment and lead cost savings by $13,000 by optimizing supplier contracts</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Manufacturing Intern</div>
+                        <div class="company">M.J Biopharm Pvt Ltd | Mumbai, India</div>
+                    </div>
+                    <div class="duration">July 2022 – December 2022</div>
+                </div>
+                <ul class="achievements">
+                    <li>Revamped production via strategic Value Stream Mapping, eliminating bottlenecks, achieving a monthly surplus of over 15,000 units</li>
+                    <li>Developed SOPs and ISO-compliant process documentation, ensuring GMP adherence in cleanroom environments</li>
+                    <li>Utilized SPC techniques resulting in a reduction of 30 product defects and 20% betterment in compliance with Good Manufacturing Practices</li>
+                    <li>Employed strategic negotiation techniques to initiate RFPs and RFQs, thereby formalizing SLAs with over 20 logistics companies</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Manufacturing Process Intern</div>
+                        <div class="company">Alcast Technologies | Mumbai, India</div>
+                    </div>
+                    <div class="duration">July 2021 – December 2021</div>
+                </div>
+                <ul class="achievements">
+                    <li>Assisted in the development and optimization of aluminum die casting processes, leveraging Statistical Process Control (SPC)</li>
+                    <li>Directed comprehensive PFMEA, implementing risk mitigation strategies achieving 20% decrease in inventory expenditure</li>
+                    <li>Led Root cause analysis for recurring defects in die-cast components, driving corrective actions that reduced rejection rate by 20%</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">Clean Room Packaging Station Optimization</div>
+                    <div class="project-duration">Veeco Instruments | August 2024 – October 2024</div>
+                    <p>Redesigned existing packaging station to meet cleanroom compliance by employing 6S principles, removing non-conforming materials, and introducing standardized layout and workflows. Collaborated with stakeholders to ensure alignment with ISO protocols.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Dual Renewable Energy Source Power Generator</div>
+                    <div class="project-duration">University of Mumbai | August 2022 – March 2023</div>
+                    <p>Accomplished consistent voltage generation in the range of 8V to 12V over a five-day observation period, demonstrating sustainable energy solutions.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Magnetic Levitation Vertical Axis Wind Turbine</div>
+                    <div class="project-duration">University of Mumbai | August 2022 – March 2023</div>
+                    <p>Investigated comprehensive tests that demonstrated a 30% reduction in vibrations, rendering VAWT an exceptionally viable option for energy production. Fabricated a 3-D working model using SolidWorks and ANSYS for structural analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="degree">Master of Science in Industrial Engineering</div>
+                <div class="university">Northeastern University, College of Engineering | Boston, MA</div>
+                <div class="graduation">December 2025</div>
+            </div>
+
+            <div class="education-item">
+                <div class="degree">Bachelor of Engineering in Mechanical Engineering</div>
+                <div class="university">University of Mumbai | Mumbai, India</div>
+                <div class="graduation">May 2023</div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <h2>Let's Connect</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">Ready to collaborate on your next manufacturing engineering challenge?</p>
+            <a href="mailto:pawar.su@northeastern.edu" class="cta-button">Get In Touch</a>
+            <a href="tel:+16177775385" class="cta-button">Call Me</a>
+        </section>
+    </div>
+</body>
+</html>
