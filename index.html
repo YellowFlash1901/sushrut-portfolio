@@ -4,485 +4,611 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushrut Pawar | Manufacturing Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'fade-in-left': 'fadeInLeft 0.6s ease-out',
+                        'fade-in-right': 'fadeInRight 0.6s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        
+        .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 48px;
-            font-weight: bold;
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
         }
-
-        h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: #667eea;
-            font-size: 1.2em;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .contact-item {
-            color: #666;
-            text-decoration: none;
-            padding: 10px 20px;
-            background: #f8f9fa;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            margin-bottom: 30px;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            color: #2c3e50;
-            font-size: 2em;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .about-text {
-            font-size: 1.1em;
-            color: #555;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
-        }
-
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background: #667eea;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 500;
-        }
-
-        .experience-item {
-            background: #f8f9fa;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .job-title {
-            color: #2c3e50;
-            font-size: 1.3em;
-            font-weight: bold;
-        }
-
-        .company {
-            color: #667eea;
-            font-size: 1.1em;
-            font-weight: 500;
-        }
-
-        .duration {
-            color: #666;
-            font-weight: 500;
-            background: white;
-            padding: 5px 15px;
-            border-radius: 15px;
-        }
-
-        .achievements {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .achievements li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-            color: #555;
-        }
-
-        .achievements li::before {
-            content: "▶";
-            color: #667eea;
-            position: absolute;
-            left: 0;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            border-top: 5px solid #667eea;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-title {
-            color: #2c3e50;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .project-duration {
-            color: #667eea;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .education-item {
-            background: #f8f9fa;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
-        }
-
-        .degree {
-            color: #2c3e50;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .university {
-            color: #667eea;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .graduation {
-            color: #666;
-            font-weight: 500;
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 20px;
-            color: white;
-        }
-
-        .cta-section h2 {
-            color: white;
-            border: none;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            background: white;
-            color: #667eea;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin: 10px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .job-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .duration {
-                margin-top: 10px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .section {
-                padding: 25px;
-            }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="profile-img">SP</div>
-            <h1>Sushrut Pawar</h1>
-            <p class="subtitle">Entry-Level Equipment/Manufacturing Engineer</p>
-            <p style="color: #666; font-size: 1.1em; margin: 20px 0;">Hands-on semiconductor industry experience in tool validation, SPC monitoring, troubleshooting, and process optimization</p>
-            
-            <div class="contact-info">
-                <a href="tel:+16177775385" class="contact-item">📞 (617) 777-5385</a>
-                <a href="mailto:pawar.su@northeastern.edu" class="contact-item">✉️ pawar.su@northeastern.edu</a>
-                <a href="#" class="contact-item">🔗 LinkedIn</a>
-                <span class="contact-item">📍 Boston, MA (Open to Relocate)</span>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow"></div>
+        <div class="absolute top-3/4 right-1/4 w-64 h-64 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold gradient-text">Sushrut Pawar</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
+                    <a href="#skills" class="text-gray-700 hover:text-primary-600 transition-colors">Skills</a>
+                    <a href="#experience" class="text-gray-700 hover:text-primary-600 transition-colors">Experience</a>
+                    <a href="#projects" class="text-gray-700 hover:text-primary-600 transition-colors">Projects</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="relative z-10">
+        <!-- Hero Section -->
+        <header class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="glass-effect rounded-3xl p-8 md:p-12 text-center animate-fade-in-up">
+                    <!-- Profile Image -->
+                    <div class="relative inline-block mb-8">
+                        <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-1 floating">
+                            <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
+                                <span class="text-4xl md:text-5xl font-bold gradient-text">SP</span>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-lg"></i>
+                        </div>
+                    </div>
+
+                    <!-- Name and Title -->
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+                        <span class="gradient-text">Sushrut Pawar</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 mb-6 font-medium">
+                        Manufacturing Engineer
+                    </p>
+                    <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8 leading-relaxed">
+                        Hands-on semiconductor industry experience in tool validation, SPC monitoring, troubleshooting, and process optimization
+                    </p>
+
+                    <!-- Contact Info -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <a href="tel:+16177775385" class="flex items-center gap-2 px-6 py-3 bg-white/50 hover:bg-white/80 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            <i class="fas fa-phone text-primary-600"></i>
+                            <span class="text-gray-700">(617) 777-5385</span>
+                        </a>
+                        <a href="mailto:pawar.su@northeastern.edu" class="flex items-center gap-2 px-6 py-3 bg-white/50 hover:bg-white/80 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            <i class="fas fa-envelope text-primary-600"></i>
+                            <span class="text-gray-700">pawar.su@northeastern.edu</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-2 px-6 py-3 bg-white/50 hover:bg-white/80 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            <i class="fab fa-linkedin text-primary-600"></i>
+                            <span class="text-gray-700">LinkedIn</span>
+                        </a>
+                        <span class="flex items-center gap-2 px-6 py-3 bg-white/50 rounded-xl">
+                            <i class="fas fa-map-marker-alt text-primary-600"></i>
+                            <span class="text-gray-700">Boston, MA</span>
+                        </span>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#contact" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                            <i class="fas fa-handshake mr-2"></i>
+                            Let's Connect
+                        </a>
+                        <a href="#experience" class="px-8 py-4 bg-white/70 text-gray-700 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-200">
+                            <i class="fas fa-eye mr-2"></i>
+                            View Experience
+                        </a>
+                    </div>
+                </div>
             </div>
         </header>
 
-        <section class="section">
-            <h2>About Me</h2>
-            <p class="about-text">
-                I am an Entry-level Equipment/Manufacturing Engineer with hands-on semiconductor industry experience. 
-                My expertise spans tool validation, SPC monitoring, troubleshooting, and process optimization. I excel at 
-                collaborating with cross-functional teams to improve tool uptime, drive cost reduction, and ensure 
-                ISO/cleanroom compliance. With a strong background in data-driven problem solving using DMAIC/8D methodologies, 
-                I'm adept at interpreting schematics, authoring SOPs and Best-Known Methods (BKMs), and partnering with 
-                suppliers for equipment reliability.
-            </p>
-        </section>
-
-        <section class="section">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Equipment & Maintenance</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Semiconductor Tool Validation</span>
-                        <span class="skill-tag">Root Cause Troubleshooting</span>
-                        <span class="skill-tag">SPC Monitoring</span>
-                        <span class="skill-tag">FDC Data Analysis</span>
-                        <span class="skill-tag">Preventive Maintenance</span>
-                        <span class="skill-tag">Supplier Management</span>
-                        <span class="skill-tag">Equipment KPIs</span>
+        <!-- About Section -->
+        <section id="about" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="glass-effect rounded-3xl p-8 md:p-12 scroll-reveal">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            About <span class="gradient-text">Me</span>
+                        </h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full"></div>
                     </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Process & Quality</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SOPs</span>
-                        <span class="skill-tag">BKMs</span>
-                        <span class="skill-tag">ISO Standards</span>
-                        <span class="skill-tag">Cleanroom Operations</span>
-                        <span class="skill-tag">PFMEA</span>
-                        <span class="skill-tag">8D/DMAIC</span>
-                        <span class="skill-tag">Reliability Testing</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Software & Data Analysis</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SAP ERP</span>
-                        <span class="skill-tag">SolidWorks</span>
-                        <span class="skill-tag">AutoCAD</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Minitab</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Advanced Excel</span>
+                    
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <p class="text-lg text-gray-600 leading-relaxed">
+                                I am an Entry-level Equipment/Manufacturing Engineer with hands-on semiconductor industry experience. 
+                                My expertise spans tool validation, SPC monitoring, troubleshooting, and process optimization.
+                            </p>
+                            <p class="text-lg text-gray-600 leading-relaxed">
+                                I excel at collaborating with cross-functional teams to improve tool uptime, drive cost reduction, and ensure 
+                                ISO/cleanroom compliance. With a strong background in data-driven problem solving using DMAIC/8D methodologies.
+                            </p>
+                            <p class="text-lg text-gray-600 leading-relaxed">
+                                I'm adept at interpreting schematics, authoring SOPs and Best-Known Methods (BKMs), and partnering with 
+                                suppliers for equipment reliability.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center p-6 bg-white/50 rounded-xl">
+                                <div class="text-3xl font-bold text-primary-600 mb-2">2+</div>
+                                <div class="text-gray-600">Years Experience</div>
+                            </div>
+                            <div class="text-center p-6 bg-white/50 rounded-xl">
+                                <div class="text-3xl font-bold text-primary-600 mb-2">3</div>
+                                <div class="text-gray-600">Major Projects</div>
+                            </div>
+                            <div class="text-center p-6 bg-white/50 rounded-xl">
+                                <div class="text-3xl font-bold text-primary-600 mb-2">$17K</div>
+                                <div class="text-gray-600">Cost Savings</div>
+                            </div>
+                            <div class="text-center p-6 bg-white/50 rounded-xl">
+                                <div class="text-3xl font-bold text-primary-600 mb-2">25%</div>
+                                <div class="text-gray-600">Efficiency Boost</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>Work Experience</h2>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Manufacturing Engineer Co-op</div>
-                        <div class="company">Veeco Instruments Inc. | New Jersey, USA</div>
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Technical <span class="gradient-text">Skills</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Equipment & Maintenance -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-cogs text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Equipment & Maintenance</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">Semiconductor Tool Validation</span>
+                            <span class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">Root Cause Troubleshooting</span>
+                            <span class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">SPC Monitoring</span>
+                            <span class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">FDC Data Analysis</span>
+                            <span class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">Preventive Maintenance</span>
+                            <span class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">Supplier Management</span>
+                            <span class="px-3 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">Equipment KPIs</span>
+                        </div>
                     </div>
-                    <div class="duration">July 2024 – December 2024</div>
-                </div>
-                <ul class="achievements">
-                    <li>Applied DMAIC/8D methods to resolve tool performance and quality issues, sustaining KPI improvements in production lines</li>
-                    <li>Monitored semiconductor tool performance using SPC, identified process drifts, executed corrective actions that reduced scrap by 12%</li>
-                    <li>Streamlined lead time by 20% completing tool teardown before scheduled deadline resulting in an estimated cost savings of $4,000</li>
-                    <li>Authored Engineering Change Requests and validated Bill of Materials for NPI semiconductor equipment, cutting procurement time by 15%</li>
-                    <li>Collaborated with process and equipment teams to optimize IC-related test fixtures, reducing cycle time by 25% and boosting testing capability</li>
-                    <li>Generated purchase requisitions in SAP for Clean Room equipment and lead cost savings by $13,000 by optimizing supplier contracts</li>
-                </ul>
-            </div>
 
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Manufacturing Intern</div>
-                        <div class="company">M.J Biopharm Pvt Ltd | Mumbai, India</div>
+                    <!-- Process & Quality -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-award text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Process & Quality</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">SOPs</span>
+                            <span class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">BKMs</span>
+                            <span class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">ISO Standards</span>
+                            <span class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">Cleanroom Operations</span>
+                            <span class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">PFMEA</span>
+                            <span class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">8D/DMAIC</span>
+                            <span class="px-3 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">Reliability Testing</span>
+                        </div>
                     </div>
-                    <div class="duration">July 2022 – December 2022</div>
-                </div>
-                <ul class="achievements">
-                    <li>Revamped production via strategic Value Stream Mapping, eliminating bottlenecks, achieving a monthly surplus of over 15,000 units</li>
-                    <li>Developed SOPs and ISO-compliant process documentation, ensuring GMP adherence in cleanroom environments</li>
-                    <li>Utilized SPC techniques resulting in a reduction of 30 product defects and 20% betterment in compliance with Good Manufacturing Practices</li>
-                    <li>Employed strategic negotiation techniques to initiate RFPs and RFQs, thereby formalizing SLAs with over 20 logistics companies</li>
-                </ul>
-            </div>
 
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Manufacturing Process Intern</div>
-                        <div class="company">Alcast Technologies | Mumbai, India</div>
+                    <!-- Software & Data Analysis -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Software & Data Analysis</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">SAP ERP</span>
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">SolidWorks</span>
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">AutoCAD</span>
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">Tableau</span>
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">Power BI</span>
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">Minitab</span>
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">Python</span>
+                            <span class="px-3 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-medium">Advanced Excel</span>
+                        </div>
                     </div>
-                    <div class="duration">July 2021 – December 2021</div>
-                </div>
-                <ul class="achievements">
-                    <li>Assisted in the development and optimization of aluminum die casting processes, leveraging Statistical Process Control (SPC)</li>
-                    <li>Directed comprehensive PFMEA, implementing risk mitigation strategies achieving 20% decrease in inventory expenditure</li>
-                    <li>Led Root cause analysis for recurring defects in die-cast components, driving corrective actions that reduced rejection rate by 20%</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Key Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-title">Clean Room Packaging Station Optimization</div>
-                    <div class="project-duration">Veeco Instruments | August 2024 – October 2024</div>
-                    <p>Redesigned existing packaging station to meet cleanroom compliance by employing 6S principles, removing non-conforming materials, and introducing standardized layout and workflows. Collaborated with stakeholders to ensure alignment with ISO protocols.</p>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">Dual Renewable Energy Source Power Generator</div>
-                    <div class="project-duration">University of Mumbai | August 2022 – March 2023</div>
-                    <p>Accomplished consistent voltage generation in the range of 8V to 12V over a five-day observation period, demonstrating sustainable energy solutions.</p>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">Magnetic Levitation Vertical Axis Wind Turbine</div>
-                    <div class="project-duration">University of Mumbai | August 2022 – March 2023</div>
-                    <p>Investigated comprehensive tests that demonstrated a 30% reduction in vibrations, rendering VAWT an exceptionally viable option for energy production. Fabricated a 3-D working model using SolidWorks and ANSYS for structural analysis.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>Education</h2>
-            <div class="education-item">
-                <div class="degree">Master of Science in Industrial Engineering</div>
-                <div class="university">Northeastern University, College of Engineering | Boston, MA</div>
-                <div class="graduation">December 2025</div>
-            </div>
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Work <span class="gradient-text">Experience</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full"></div>
+                </div>
 
-            <div class="education-item">
-                <div class="degree">Bachelor of Engineering in Mechanical Engineering</div>
-                <div class="university">University of Mumbai | Mumbai, India</div>
-                <div class="graduation">May 2023</div>
+                <div class="space-y-8">
+                    <!-- Veeco Experience -->
+                    <div class="glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 scroll-reveal">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <div class="mb-4 md:mb-0">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Manufacturing Engineer Co-op</h3>
+                                <p class="text-xl text-primary-600 font-semibold">Veeco Instruments Inc.</p>
+                                <p class="text-gray-500">New Jersey, USA</p>
+                            </div>
+                            <div class="px-4 py-2 bg-primary-100 text-primary-800 rounded-lg font-semibold">
+                                July 2024 – December 2024
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Applied DMAIC/8D methods to resolve tool performance and quality issues, sustaining KPI improvements in production lines</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Monitored semiconductor tool performance using SPC, identified process drifts, executed corrective actions that reduced scrap by 12%</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Streamlined lead time by 20% completing tool teardown before scheduled deadline resulting in an estimated cost savings of $4,000</p>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Authored Engineering Change Requests and validated Bill of Materials for NPI semiconductor equipment, cutting procurement time by 15%</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Collaborated with process and equipment teams to optimize IC-related test fixtures, reducing cycle time by 25% and boosting testing capability</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Generated purchase requisitions in SAP for Clean Room equipment and lead cost savings by $13,000 by optimizing supplier contracts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- M.J Biopharm Experience -->
+                    <div class="glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 scroll-reveal">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <div class="mb-4 md:mb-0">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Manufacturing Intern</h3>
+                                <p class="text-xl text-primary-600 font-semibold">M.J Biopharm Pvt Ltd</p>
+                                <p class="text-gray-500">Mumbai, India</p>
+                            </div>
+                            <div class="px-4 py-2 bg-primary-100 text-primary-800 rounded-lg font-semibold">
+                                July 2022 – December 2022
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Revamped production via strategic Value Stream Mapping, eliminating bottlenecks, achieving a monthly surplus of over 15,000 units</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Developed SOPs and ISO-compliant process documentation, ensuring GMP adherence in cleanroom environments</p>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Utilized SPC techniques resulting in a reduction of 30 product defects and 20% betterment in compliance with Good Manufacturing Practices</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                    <p class="text-gray-600">Employed strategic negotiation techniques to initiate RFPs and RFQs, thereby formalizing SLAs with over 20 logistics companies</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alcast Experience -->
+                    <div class="glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 scroll-reveal">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <div class="mb-4 md:mb-0">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Manufacturing Process Intern</h3>
+                                <p class="text-xl text-primary-600 font-semibold">Alcast Technologies</p>
+                                <p class="text-gray-500">Mumbai, India</p>
+                            </div>
+                            <div class="px-4 py-2 bg-primary-100 text-primary-800 rounded-lg font-semibold">
+                                July 2021 – December 2021
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                <p class="text-gray-600">Assisted in the development and optimization of aluminum die casting processes, leveraging Statistical Process Control (SPC)</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                <p class="text-gray-600">Directed comprehensive PFMEA, implementing risk mitigation strategies achieving 20% decrease in inventory expenditure</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+                                <p class="text-gray-600">Led Root cause analysis for recurring defects in die-cast components, driving corrective actions that reduced rejection rate by 20%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section cta-section">
-            <h2>Let's Connect</h2>
-            <p style="font-size: 1.2em; margin-bottom: 30px;">Ready to collaborate on your next manufacturing engineering challenge?</p>
-            <a href="mailto:pawar.su@northeastern.edu" class="cta-button">Get In Touch</a>
-            <a href="tel:+16177775385" class="cta-button">Call Me</a>
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Key <span class="gradient-text">Projects</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-4">
+                                <i class="fas fa-industry text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Clean Room Packaging Station Optimization</h3>
+                            <p class="text-sm text-primary-600 font-semibold mb-4">Veeco Instruments | August 2024 – October 2024</p>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Redesigned existing packaging station to meet cleanroom compliance by employing 6S principles, removing non-conforming materials, and introducing standardized layout and workflows. Collaborated with stakeholders to ensure alignment with ISO protocols.
+                        </p>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
+                                <i class="fas fa-solar-panel text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Dual Renewable Energy Source Power Generator</h3>
+                            <p class="text-sm text-primary-600 font-semibold mb-4">University of Mumbai | August 2022 – March 2023</p>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Accomplished consistent voltage generation in the range of 8V to 12V over a five-day observation period, demonstrating sustainable energy solutions.
+                        </p>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+                                <i class="fas fa-fan text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Magnetic Levitation Vertical Axis Wind Turbine</h3>
+                            <p class="text-sm text-primary-600 font-semibold mb-4">University of Mumbai | August 2022 – March 2023</p>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Investigated comprehensive tests that demonstrated a 30% reduction in vibrations, rendering VAWT an exceptionally viable option for energy production. Fabricated a 3-D working model using SolidWorks and ANSYS for structural analysis.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <!-- Education Section -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <span class="gradient-text">Education</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Master's Degree -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Master of Science</h3>
+                                <p class="text-primary-600 font-semibold">Industrial Engineering</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-gray-700 font-semibold">Northeastern University, College of Engineering</p>
+                            <p class="text-gray-500">Boston, MA</p>
+                            <p class="text-primary-600 font-semibold">December 2025</p>
+                        </div>
+                    </div>
+
+                    <!-- Bachelor's Degree -->
+                    <div class="glass-effect rounded-2xl p-8 hover:scale-105 transition-all duration-300 scroll-reveal">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-university text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Bachelor of Engineering</h3>
+                                <p class="text-primary-600 font-semibold">Mechanical Engineering</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-gray-700 font-semibold">University of Mumbai</p>
+                            <p class="text-gray-500">Mumbai, India</p>
+                            <p class="text-primary-600 font-semibold">May 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-effect rounded-3xl p-8 md:p-12 text-center scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Let's <span class="gradient-text">Connect</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                        Ready to collaborate on your next manufacturing engineering challenge? Let's discuss how I can contribute to your team's success.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                        <a href="mailto:pawar.su@northeastern.edu" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                            <i class="fas fa-envelope mr-3"></i>
+                            Send Email
+                        </a>
+                        <a href="tel:+16177775385" class="inline-flex items-center justify-center px-8 py-4 bg-white/70 text-gray-700 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-200">
+                            <i class="fas fa-phone mr-3"></i>
+                            Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto text-center">
+                <p class="text-gray-500">
+                    © 2024 Sushrut Pawar. Built with modern web technologies.
+                </p>
+            </div>
+        </footer>
     </div>
+
+    <!-- JavaScript for scroll animations and smooth scrolling -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('button').addEventListener('click', function() {
+            // You can implement mobile menu functionality here
+            console.log('Mobile menu clicked');
+        });
+
+        // Add parallax effect to background elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.fixed');
+            const speed = 0.5;
+
+            parallax.forEach(element => {
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
