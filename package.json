@@ -4,9 +4,9 @@
   "description": "Professional portfolio website for Sushrut Pawar - Manufacturing Engineer",
   "main": "index.html",
   "scripts": {
-    "dev": "serve .",
-    "build": "echo 'No build step needed for static site'",
-    "start": "serve ."
+    "dev": "serve public",
+    "build": "cp index.html public/",
+    "start": "serve public"
   },
   "keywords": [
     "portfolio",
